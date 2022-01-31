@@ -14,8 +14,10 @@ const renderProduct = (title, price) => {
             </div>`
 };
 const renderPage = list => {
-    const productsList = list.map(item => renderProduct(item.title,item.price));
+    const productsList = list.map(item => renderProduct(item.title, item.price));
+    productsList.toString = function() {return this.join('')};//Склеивание через пробел
     console.log(productsList);
+    
     document.querySelector('.products').innerHTML = productsList;
 };
 
