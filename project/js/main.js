@@ -10,15 +10,18 @@ const renderProduct = (title, price) => {
     return `<div class="product-item">
                 <h3>${title}</h3>
                 <p>${price}</p>
-                <button class="buy-btn">Купить</button>
-            </div>`
+                <div class="item-img"><img src="/project/img/images.png" alt="new"></div>
+                <button class="buy-btn btn-active">Купить</button>
+            </div>`;
 };
 const renderPage = list => {
     const productsList = list.map(item => renderProduct(item.title, item.price));
-    productsList.toString = function() {return this.join('')};//Склеивание через пробел
+    // productsList.toString = function() {
+    //     return this.join(''); //Склеивание через пробел
+    // };
     console.log(productsList);
     
-    document.querySelector('.products').innerHTML = productsList;
+    document.querySelector('.products').innerHTML = productsList.join('');
 };
 
 renderPage(products);
