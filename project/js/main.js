@@ -15,10 +15,10 @@ class ProductList{
         ];
     }
 
-    sumItems(){
-        let sum = this.goods.map(item =>item.price)
+    sumItems(sum){
+        sum = this.goods.map(item =>item.price)
                             .reduce((a,b) => a+b);        
-        console.log(` суммарную стоимость всех товаров ${sum}`)
+        console.log(`Суммарную стоимость всех товаров ${sum}`)
       }
 
     addItem(){

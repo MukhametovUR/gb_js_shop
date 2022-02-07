@@ -1,6 +1,7 @@
 header {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     background: rgb(32, 32, 32);
 }
 
@@ -26,18 +27,29 @@ h1 {
     flex-direction: column;
     justify-content: space-between;
     font-size: 20px;
+    flex-grow: 0;
+}
+
+.item-img{
+    flex-grow: 1;
 }
 
 .item-img img{
     width: 200px;
 }
 
+h3 {
+    font-size: 38px;
+}
+
+p, .buy-btn {
+    font-size: 25px;
+}
 .buy-btn {
     border-radius: 5px;   
     justify-content: center;
     color: #fff;
     display: flex;
-    font-size: 20px;
     background: rgb(107, 107, 107);
 }
 
