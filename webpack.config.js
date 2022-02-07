@@ -1,9 +1,12 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require("mini-css-extract-plugin")
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+
+
 
 module.exports = {
-    mode: "production",
+    mode: "development",
 
     entry: {
         main: path.resolve(__dirname, './src/index.js'),
@@ -15,30 +18,22 @@ module.exports = {
     },
 
     module: {
-        rules: [
-          {
-            test: /\.s[ac]ss$/,
-            use: [
-              {
-                loader: MiniCssExtractPlugin.loader,
-                options: {},
-              },
-              'css-loader',
-              'sass-loader'
-            ]
-          },
-          {
-            test: /\.css$/,
-            use: [
-              {
-                loader: MiniCssExtractPlugin.loader,
-                options: {},
-              },
-              'css-loader'
-            ]
-          },
+      rules: [
+        {
+          test: /\.s[ac]ss$/,
+          use: [
+            {
+              loader: MiniCssExtractPlugin.loader,
+              options: {},
+            },
+            'css-loader',
+            'sass-loader'
+          ]
+        },     
         ]
       },
+
+      
 
     plugins: [
       new HtmlWebpackPlugin({
@@ -50,6 +45,7 @@ module.exports = {
         filename: "[name].css",
         chunkFilename: "[id].css",
       }),
+      
     ],
 
     devServer: {

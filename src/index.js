@@ -1,5 +1,5 @@
 
 import list from "./main";
-import './assets/main.scss'
+import './scss/main.scss'
 
-consta  = list;
+const a  = list;
