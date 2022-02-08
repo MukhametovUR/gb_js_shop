@@ -22,11 +22,12 @@ const API = 'https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-a
 
 
 class ProductItem{   
-    constructor(product_name, price) {
-        this.product_name = product_name;
-        this.price = price;
+    constructor(product) {
+        this.product_name = product.product_name;
+        this.price = product.price;
+        this.id = product.id_product;
       } 
-    renderItem(){
+      render(){
             return `<div class="product-item">
             <div class="item-img">
             </div>
@@ -37,25 +38,39 @@ class ProductItem{
     }
 }
 class ProductList{
-    constructor() {
+    constructor(container = '.products') {
+        this.container = container;
         this.goods = [];
+        this._getProducts()
+            .then(data => { //data - объект js
+                 this.goods = data;
+                console.log(data);
+                 this.render()
+            });
       }
-    _fetchProducts(cb){
-        makeGETRequest(`${API}/catalogData.json`,(goods) => {
-            this.goods = JSON.parse(goods);
-            cb();
-            console.log(goods);
-        })
+    // _fetchProducts(cb){
+    //     makeGETRequest(`${API}/catalogData.json`,(goods) => {
+    //         this.goods = JSON.parse(goods);
+    //         cb();
+    //     })
+    // }
+    _getProducts() {
+        return fetch(`${API}/catalogData.json`)
+            .then(result => result.json())
+            .catch(error => {
+                console.log(error);
+            });     
+        }
+
+
+    render() {
+        const block = document.querySelector(this.container);
+        for (let product of this.goods){
+            const productObj = new ProductItem(product);
+//            this.allProducts.push(productObj);
+            block.insertAdjacentHTML('beforeend', productObj.render());
+        }
     }
-    renderProducts() {
-        let listHtml = '';
-        this.goods.forEach(good => {
-        console.log(good.product_name, good.price);
-          const goodItem = new ProductItem(good.product_name, good.price);
-          listHtml += goodItem.renderItem();
-        });
-        document.querySelector('.products').innerHTML = listHtml;
-      }
     
 
     sumItems(sum){
@@ -83,8 +98,8 @@ class ProductList{
 // let list = new ProductList();
 
 const list = new ProductList();
-list._fetchProducts(() => {
-  list.renderProducts();
+list._getProducts(() => {
+  list.render();
 });
 
 export default list
