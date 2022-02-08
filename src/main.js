@@ -1,19 +1,54 @@
+function makeGETRequest(url, callback) {
+    var xhr;
+  
+    if (window.XMLHttpRequest) {
+      xhr = new XMLHttpRequest();
+    } else if (window.ActiveXObject) { 
+      xhr = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+  
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState === 4) {
+        callback(xhr.responseText);
+      }
+    }
+  
+    xhr.open('GET', url, true);
+    xhr.send();
+  }
+
+
+const API_URL = 'https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses';
+
+
+class ProductItem{
+    render(){
+            return `<div class="product-item">
+            <div class="item-img">
+            </div>
+                <h3>${this.product_name}</h3>
+                <p>${this.price}</p>
+                <button class="buy-btn">Купить</button>
+            </div>`
+    }
+}
 class ProductList{
-    constructor(container='.products'){
-        this.container = container;
-        this.goods = [];
-        this._fetchProducts();//рекомендация, чтобы метод был вызван в текущем классе
-        this.render();//вывод товаров на страницу
-        this.sumItems();
+    _fetchProducts(cb){
+        makeGETRequest(`${API_URL}/catalogData.json`,(goods) => {
+            this.goods = JSON.parse(goods);
+            cb();
+            console.log(this.goods);
+        })
     }
-    _fetchProducts(){
-        this.goods = [
-        {id: 1, title: 'Notebook',price: 2000, image: './images/notebook.jpg'},
-        {id: 2, title: 'Mouse',price: 20, image: './images/mouse.jpg'},
-        {id: 3, title: 'Keyboard',price: 200, image:'./images/keyboard.jpg'},
-        {id: 4, title: 'Gamepad',price: 50, image: './images/gamepad.jpg'},
-        ];
-    }
+    render() {
+        let listHtml = '';
+        this.goods.forEach(good => {
+          const goodItem = new ProductItem(good.product_name, good.price);
+          listHtml += goodItem.render();
+        });
+        document.querySelector('.products').innerHTML = listHtml;
+      }
+    
 
     sumItems(sum){
         sum = this.goods.map(item =>item.price)
@@ -33,35 +68,15 @@ class ProductList{
 
     }
 
-    render(){
-        const block = document.querySelector(this.container);
-        for(let product of this.goods){
-             const item = new ProductItem(product);
-             block.insertAdjacentHTML("beforeend",item.render());
-        }
-    }
-}
-class ProductItem{
-    constructor(product){
-        this.title = product.title;
-        this.id = product.id;
-        this.price = product.price;
-        this.image = product.image;
-    }
-    render(){
-            return `<div class="product-item">
-            <div class="item-img">
-                <img src=${this.image} alt="img">
-            </div>
-                <h3>${this.title}</h3>
-                <p>${this.price}</p>
-                <button class="buy-btn">Купить</button>
-            </div>`
-    }
+    
 }
 
 
-let list = new ProductList();
+// let list = new ProductList();
 
+const list = new ProductList();
+list._fetchProducts(() => {
+  list.render();
+});
 
 export default list
