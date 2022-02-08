@@ -18,11 +18,15 @@ function makeGETRequest(url, callback) {
   }
 
 
-const API_URL = 'https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses';
+const API = 'https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses';
 
 
-class ProductItem{
-    render(){
+class ProductItem{   
+    constructor(product_name, price) {
+        this.product_name = product_name;
+        this.price = price;
+      } 
+    renderItem(){
             return `<div class="product-item">
             <div class="item-img">
             </div>
@@ -33,18 +37,22 @@ class ProductItem{
     }
 }
 class ProductList{
+    constructor() {
+        this.goods = [];
+      }
     _fetchProducts(cb){
-        makeGETRequest(`${API_URL}/catalogData.json`,(goods) => {
+        makeGETRequest(`${API}/catalogData.json`,(goods) => {
             this.goods = JSON.parse(goods);
             cb();
-            console.log(this.goods);
+            console.log(goods);
         })
     }
-    render() {
+    renderProducts() {
         let listHtml = '';
         this.goods.forEach(good => {
+        console.log(good.product_name, good.price);
           const goodItem = new ProductItem(good.product_name, good.price);
-          listHtml += goodItem.render();
+          listHtml += goodItem.renderItem();
         });
         document.querySelector('.products').innerHTML = listHtml;
       }
@@ -76,7 +84,7 @@ class ProductList{
 
 const list = new ProductList();
 list._fetchProducts(() => {
-  list.render();
+  list.renderProducts();
 });
 
 export default list
