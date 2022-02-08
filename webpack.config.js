@@ -1,7 +1,8 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const MiniCssExtractPlugin = require("mini-css-extract-plugin")
-const CopyWebpackPlugin = require('copy-webpack-plugin');
+const miniCss = require('mini-css-extract-plugin');
+const minify = require('optimize-css-assets-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 
 
 
@@ -18,20 +19,27 @@ module.exports = {
     },
 
     module: {
-      rules: [
+      rules: 
+      [
         {
-          test: /\.s[ac]ss$/,
+          test:/\.(s*)css$/,
           use: [
-            {
-              loader: MiniCssExtractPlugin.loader,
-              options: {},
-            },
-            'css-loader',
-            'sass-loader'
-          ]
-        },     
-        ]
-      },
+              miniCss.loader,
+              'css-loader',
+              'sass-loader',
+            ]
+        },
+        {
+          test: /\.(png|jpg)$/,
+          loader: 'url-loader'
+        }
+      ]      
+   },
+    optimization: {
+      minimizer: [
+        new minify({})
+      ],
+    },
 
       
 
@@ -41,11 +49,17 @@ module.exports = {
           template: path.resolve(__dirname, './public/template.html'), // шаблон
           filename: 'index.html', // название выходного файла
       }),
-      new MiniCssExtractPlugin({
-        filename: "[name].css",
-        chunkFilename: "[id].css",
-      }),
-      
+      new miniCss({
+        filename: 'style.css',
+     }),
+     new CopyPlugin({
+      patterns: [
+          {
+            from: path.resolve(__dirname, 'src/img'),
+            to:   path.resolve(__dirname, 'dist/images')
+          }
+        ]
+      })
     ],
 
     devServer: {
