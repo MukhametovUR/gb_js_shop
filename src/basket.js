@@ -1,28 +1,27 @@
 const API = 'https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses';
 
-class ProductItem{   
+class BasketItem{   
     constructor(product) {
         this.product_name = product.product_name;
         this.price = product.price;
         this.id = product.id_product;
       } 
       render(){
-            return `<div class="product-item">
-
+            return `<div class="basket-item">
                 <h3>${this.product_name}</h3>
                 <p>${this.price}</p>
             </div>`
     }
 }
 
-class basket {
-    constructor(container = '.header') {
+class BasketList {
+    constructor(container = '.basket') {
         this.container = container;
         this.goods = [];
         this._getBasket()
             .then(data => { //data - объект js
-                 this.goods.contents = data;
-                console.log(data);
+                 this.goods = data.contents;
+                // console.log(data.contents);
                  this.render()
             });
       }
@@ -37,15 +36,25 @@ class basket {
     render() {
         const block = document.querySelector(this.container);
         for (let product of this.goods){
-            const productObj = new ProductItem(product);
+            const productObj = new BasketItem(product);
 //            this.allProducts.push(productObj);
-            block.insertAdjacentHTML('beforeend', productObj.render());
+            block.insertAdjacentHTML('afterend', productObj.render());
         }
     }    
 
 }
 
-const list = new basket();
-list._getBasket(() => {
-    list.render();
+const listBasket = new BasketList();
+listBasket._getBasket(() => {
+    listBasket.render();
+});
+
+
+let btn = document.querySelector('.btn-cart');
+let basket = document.querySelector('.basket-item');
+console.log(btn)
+console.log(basket)
+
+btn.addEventListener('click',()=>{
+    console.log('click')
 });

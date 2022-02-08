@@ -10,7 +10,7 @@ class ProductList{
         this._getProducts()
             .then(data => { //data - объект js
                  this.goods = data;
-                console.log(data);
+                // console.log(data);
                  this.render()
             });
       }

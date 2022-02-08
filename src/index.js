@@ -2,7 +2,7 @@
 import ProductItem from "./productItem";
 import ProductList from "./productList";
 import list from "./productList";
-import basket from './basket'
+import listBaskets from './basket'
 
 import './scss/main.scss'
 
@@ -14,3 +14,5 @@ import './scss/main.scss'
 // list._getProducts(() => {
 //     list.render();
 // });
+
+

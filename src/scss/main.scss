@@ -1,9 +1,21 @@
-header {
+.basket {
     display: flex;
     justify-content: space-between;
     align-items: center;
     background: rgb(32, 32, 32);
+    position: relative;
 }
+
+.basket-item {
+    // position: absolute;
+display: flex;
+align-items:flex-end;
+flex-direction: column;
+}
+
+.active{
+    visibility:visible;}
+
 
 h1 {
     color: #fff;;
