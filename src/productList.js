@@ -48,10 +48,6 @@ class ProductList{
     updateItem(){
 
     }
-
-    updateItem(){
-
-    }
 }
 
 export default ProductList

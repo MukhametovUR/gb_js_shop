@@ -9,6 +9,7 @@ export default class ProductItem{
             return `<div class="product-item">
             <div class="item-img">
             </div>
+                <img src="./images/images.png">
                 <h3>${this.product_name}</h3>
                 <p>${this.price}</p>
                 <button class="buy-btn">Купить</button>
