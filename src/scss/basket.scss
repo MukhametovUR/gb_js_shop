@@ -1,0 +1,41 @@
+.basket {
+    
+    background: rgb(236, 232, 255);
+    position: absolute;
+    border: 1px solid rgba(20, 20, 20, .5);
+    padding: 0 5px;
+    right: 10px;
+    display: none;
+}
+
+.basket {
+    &-title {
+        font-size: 20px;
+    }
+
+    &-price {
+        font-size: 20px;
+    }
+
+    &-active {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+.active{
+    visibility:visible;
+}
+
+.buy-btn {
+    border-radius: 5px;   
+    justify-content: center;
+    color: #fff;
+    display: flex;
+    background: rgb(107, 107, 107);
+}
+
+.buy-btn:active{
+    background: #000;
+    
+}

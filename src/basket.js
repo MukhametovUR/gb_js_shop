@@ -6,10 +6,11 @@ class BasketItem{
         this.price = product.price;
         this.id = product.id_product;
       } 
+      
       render(){
             return `<div class="basket-item">
-                <h3>${this.product_name}</h3>
-                <p>${this.price}</p>
+                <h3 class="basket-title">${this.product_name}</h3>
+                <p class="basket-price">${this.price}</p>
             </div>`
     }
 }
@@ -24,6 +25,7 @@ class BasketList {
                 // console.log(data.contents);
                  this.render()
             });
+            
       }
     _getBasket() {
         return fetch(`${API}/getBasket.json`)
@@ -38,10 +40,11 @@ class BasketList {
         for (let product of this.goods){
             const productObj = new BasketItem(product);
 //            this.allProducts.push(productObj);
-            block.insertAdjacentHTML('afterend', productObj.render());
+            block.insertAdjacentHTML('beforeend', productObj.render());
         }
-    }    
-
+        showBasket()
+    }   
+     
 }
 
 const listBasket = new BasketList();
@@ -50,11 +53,14 @@ listBasket._getBasket(() => {
 });
 
 
-let btn = document.querySelector('.btn-cart');
-let basket = document.querySelector('.basket-item');
-console.log(btn)
-console.log(basket)
+function showBasket() {
+    let btn = document.querySelector('.btn-cart');
+    let basket = document.querySelector('.basket');
+    console.log(btn)
+    console.log(basket)
 
-btn.addEventListener('click',()=>{
-    console.log('click')
-});
+    btn.addEventListener('click',function() {
+        console.log(event);
+        basket.classList.toggle('basket-active');        
+    });
+}
