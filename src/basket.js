@@ -56,11 +56,8 @@ listBasket._getBasket(() => {
 function showBasket() {
     let btn = document.querySelector('.btn-cart');
     let basket = document.querySelector('.basket');
-    console.log(btn)
-    console.log(basket)
 
     btn.addEventListener('click',function() {
-        console.log(event);
         basket.classList.toggle('basket-active');        
     });
 }

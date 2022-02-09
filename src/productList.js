@@ -29,6 +29,8 @@ class ProductList{
 //            this.allProducts.push(productObj);
             block.insertAdjacentHTML('beforeend', productObj.render());
         }
+        this.sumItems();
+        
     }    
 
     sumItems(sum){
@@ -38,7 +40,7 @@ class ProductList{
       }
 
     addItem(){
-
+        
     }
 
     deleteItem(){
@@ -49,5 +51,6 @@ class ProductList{
 
     }
 }
+
 
 export default ProductList
