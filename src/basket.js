@@ -1,72 +1,69 @@
-const API = 'https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses';
+// const API = 'https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses';
+// class BasketItem{   
+//     constructor(product) {
+//         this.product_name = product.product_name;
+//         this.price = product.price;
+//         this.id = product.id_product;
+//       }       
+//       render(){
+//             return `<div class="basket-item">
+//                 <h3 class="basket-title">${this.product_name}</h3>
+//                 <p class="basket-price">${this.price}</p>                
+//             </div>`
+//     }
+// }
 
-class BasketItem{   
-    constructor(product) {
-        this.product_name = product.product_name;
-        this.price = product.price;
-        this.id = product.id_product;
-      } 
-      
-      render(){
-            return `<div class="basket-item">
-                <h3 class="basket-title">${this.product_name}</h3>
-                <p class="basket-price">${this.price}</p>                
-            </div>`
-    }
-}
-
-class BasketList {
-    constructor(container = '.basket') {
-        this.container = container;
-        this.showBasket();
-        
-        this.goods = [];
-        this._getBasket()
-            .then(data => { //data - объект js
-                 this.goods = data.contents;
-                // console.log(data.contents);
-                 this.render()
-            });
+// class BasketList {
+//     constructor(container = '.basket') {
+//         this.container = container;
+//         this.showBasket();        
+//         this.goods = [];
+//         this._getBasket()
+//             .then(data => { //data - объект js
+//                  this.goods = data.contents;
+//                 // console.log(data.contents);
+//                  this.render()
+//             });
             
-      }
-    _getBasket() {
-        return fetch(`${API}/getBasket.json`)
-            .then(result => result.json())
-            .catch(error => {
-                console.log(error);
-            });     
-        }
+//       }
+//     _getBasket() {
+//         return fetch(`${API}/getBasket.json`)
+//             .then(result => result.json())
+//             .catch(error => {
+//                 console.log(error);
+//             });     
+//         }
 
-    render() {
-        const block = document.querySelector(this.container);
-        for (let product of this.goods){
-            const productObj = new BasketItem(product);
-            // console.log(productObj);            
-            block.insertAdjacentHTML('beforeend', productObj.render());
-        }
-        block.insertAdjacentHTML('beforeend',`
-        <div class="basket-amount">Итого: ${this.sumBasket()}</div>
-        `);
-    }    
+//     render() {
+//         const block = document.querySelector(this.container);
+//         for (let product of this.goods){
+//             const productObj = new BasketItem(product);
+//             // console.log(productObj);            
+//             block.insertAdjacentHTML('beforeend', productObj.render());
+//         }
+//         block.insertAdjacentHTML('beforeend',`
+//         <div class="basket-amount">Итого: ${this.sumBasket()}</div>
+//         `);
+//     }    
     
-    showBasket() {
-        let btn = document.querySelector('.btn-cart');
-        let basket = document.querySelector('.basket');    
-        btn.addEventListener('click',function() {
-            basket.classList.toggle('basket-active');        
-        });
-    }
+//     showBasket() {
+//         let btn = document.querySelector('.btn-cart');
+//         let basket = document.querySelector('.basket');    
+//         btn.addEventListener('click',function() {
+//             basket.classList.toggle('basket-active');        
+//         });
+//     }
 
-    sumBasket (sum){
-        sum = this.goods.map(item =>item.price)
-                        .reduce((a,b) => a+b);  
-                        return sum;      
-      }   
-}
+//     sumBasket (sum){
+//         sum = this.goods.map(item =>item.price)
+//                         .reduce((a,b) => a+b);  
+//                         return sum;      
+//       }   
+// }
 
-const listBasket = new BasketList();
-listBasket._getBasket(() => {
-    listBasket.render();
-});
+// const listBasket = new BasketList();
+// listBasket._getBasket(() => {
+//     listBasket.render();
+// });
 
 
