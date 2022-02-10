@@ -7,6 +7,7 @@ class ProductList{
     constructor(container = '.products') {
         this.container = container;
         this.goods = [];
+        
         this._getProducts()
             .then(data => { //data - объект js
                  this.goods = data;
@@ -29,15 +30,15 @@ class ProductList{
 //            this.allProducts.push(productObj);
             block.insertAdjacentHTML('beforeend', productObj.render());
         }
-        this.sumItems();
+        // this.sumItems(); //Вывод суммы предложенных товаров
         
     }    
 
-    sumItems(sum){
-        sum = this.goods.map(item =>item.price)
-                            .reduce((a,b) => a+b);        
-        console.log(`Суммарную стоимость всех товаров ${sum}`)
-      }
+    // sumItems(sum){ //Функция для вывода суммы предложенных товаров
+    //     sum = this.goods.map(item =>item.price)
+    //                         .reduce((a,b) => a+b);        
+    //     console.log(`Суммарную стоимость всех товаров ${sum}`)
+    //   }
 
     addItem(){
         

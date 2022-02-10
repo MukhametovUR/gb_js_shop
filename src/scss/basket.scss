@@ -17,9 +17,15 @@
         font-size: 20px;
     }
 
+    &-amount {
+        font-size: 18px;
+    }
+
     &-active {
         display: flex;
         flex-direction: column;
+        flex-wrap: wrap;
+        font-size: 18px;
     }
 }
 

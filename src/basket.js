@@ -10,7 +10,7 @@ class BasketItem{
       render(){
             return `<div class="basket-item">
                 <h3 class="basket-title">${this.product_name}</h3>
-                <p class="basket-price">${this.price}</p>
+                <p class="basket-price">${this.price}</p>                
             </div>`
     }
 }
@@ -18,6 +18,8 @@ class BasketItem{
 class BasketList {
     constructor(container = '.basket') {
         this.container = container;
+        this.showBasket();
+        
         this.goods = [];
         this._getBasket()
             .then(data => { //data - объект js
@@ -39,12 +41,27 @@ class BasketList {
         const block = document.querySelector(this.container);
         for (let product of this.goods){
             const productObj = new BasketItem(product);
-//            this.allProducts.push(productObj);
+            // console.log(productObj);            
             block.insertAdjacentHTML('beforeend', productObj.render());
         }
-        showBasket()
-    }   
-     
+        block.insertAdjacentHTML('beforeend',`
+        <div class="basket-amount">Итого: ${this.sumBasket()}</div>
+        `);
+    }    
+    
+    showBasket() {
+        let btn = document.querySelector('.btn-cart');
+        let basket = document.querySelector('.basket');    
+        btn.addEventListener('click',function() {
+            basket.classList.toggle('basket-active');        
+        });
+    }
+
+    sumBasket (sum){
+        sum = this.goods.map(item =>item.price)
+                        .reduce((a,b) => a+b);  
+                        return sum;      
+      }   
 }
 
 const listBasket = new BasketList();
@@ -53,11 +70,3 @@ listBasket._getBasket(() => {
 });
 
 
-function showBasket() {
-    let btn = document.querySelector('.btn-cart');
-    let basket = document.querySelector('.basket');
-
-    btn.addEventListener('click',function() {
-        basket.classList.toggle('basket-active');        
-    });
-}
