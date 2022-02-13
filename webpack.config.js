@@ -8,14 +8,14 @@ const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = {
     mode: "development",
-
     entry: {
         main: path.resolve(__dirname, './src/index.js'),
     },
-
+    
     output: {
       path: path.resolve(__dirname, './dist'),
-      filename: '[name].bundle.js'
+      filename: '[name].bundle.js',
+      
     },
 
     module: {
@@ -24,10 +24,9 @@ module.exports = {
         {
           test:/\.(s*)css$/,
           use: [
-              miniCss.loader,
-              'css-loader',
-              'sass-loader',
-            ]
+            miniCss.loader,
+          "css-loader"
+        ],
         },
         {
           test: /\.(png|jpg)$/,
@@ -35,12 +34,11 @@ module.exports = {
         }
       ]      
    },
-    optimization: {
+   optimization: {
       minimizer: [
         new minify({})
       ],
     },
-
       
 
     plugins: [
@@ -49,9 +47,11 @@ module.exports = {
           template: path.resolve(__dirname, './public/template.html'), // шаблон
           filename: 'index.html', // название выходного файла
       }),
+      
       new miniCss({
         filename: 'style.css',
      }),
+
      new CopyPlugin({
       patterns: [
           {
@@ -61,7 +61,6 @@ module.exports = {
         ]
       })
     ],
-
     devServer: {
       static: {
         directory: path.join(__dirname, 'dist'),
