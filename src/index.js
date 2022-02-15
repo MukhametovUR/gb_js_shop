@@ -21,6 +21,9 @@ const app = new Vue({
          this.filtered = this.products.filter(product => regexp.test(product.product_name));
          this.products = this.filtered;
          },
+         showBasket(){
+            document.querySelector('.cart-block').classList.toggle('invisible');
+         },
         getJson(url){
             return fetch(url)
                 .then(result => result.json())

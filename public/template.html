@@ -17,10 +17,10 @@
                     <i class="fas fa-search"></i>
                 </button>
             </form>
-            <button class="btn-cart" type="button">Корзина</button>
-            <div class="cart-block ">
+            <button  @click="showBasket()" class="btn-cart" type="button">Корзина</button>
+            <div class="cart-block invisible">
                 <div class="cart-item" v-for="product of basket" :key="product.id_product">
-                    <div class="desc">
+                    <div class="cart">
                         <h3>{{product.product_name}}</h3>
                         <p>{{product.price}} $</p>
                         <p>{{product.quantity}}</p>
