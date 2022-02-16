@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Интернет-магазин</title>
-    <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
 <div id="app">
@@ -21,9 +20,16 @@
             <div class="cart-block invisible">
                 <div class="cart-item" v-for="product of basket" :key="product.id_product">
                     <div class="cart">
-                        <h3>{{product.product_name}}</h3>
-                        <p>{{product.price}} $</p>
-                        <p>{{product.quantity}}</p>
+                        <img :src="imgCatalog" class="cart-img" alt="Some img">
+                        <div>
+                            <h3>{{product.product_name}}</h3>                        
+                            <p> Quantity {{ product.quantity }}</p>
+                        </div>
+                        <div>
+                            <p>{{product.price}} $</p>
+                            <button @click="product.quantity--" class="buy-btn decrease-btn">x</button>
+                        </div>
+                    <hr>
                     </div>
                 </div>
             </div>
@@ -32,8 +38,8 @@
     <main>
         <div class="products">
             <div class="product-item" v-for="product of products" :key="product.id_product">
-                <img :src="imgCatalog" alt="Some img">
                 <div class="desc">
+                    <img :src="imgCatalog" alt="Some img">
                     <h3>{{product.product_name}}</h3>
                     <p>{{product.price}} $</p>
                     <button class="buy-btn" @click="addProduct(product)">Купить</button>

@@ -49,7 +49,7 @@ module.exports = {
       }),
       
       new miniCss({
-        filename: 'style.css',
+        filename: './css/style.css',
      }),
 
      new CopyPlugin({

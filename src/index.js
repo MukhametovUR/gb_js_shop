@@ -14,6 +14,7 @@ const app = new Vue({
         imgCatalog: 'https://via.placeholder.com/200x150',
         userSearch: '',
         show: false,
+        itemCart:0
     },
     methods: {
         filter(){
@@ -31,9 +32,12 @@ const app = new Vue({
                     console.log(error);
                 })
         },
-        addProduct(product){
-            console.log(product.id_product);
-        }
+        addProduct(item){
+            let itemCart = Object.assign(item,{quantity:1});  
+            console.log(itemCart);
+            console.log(itemCart.quantity);
+        },
+        
     },
     mounted(){
        this.getJson(`${API + this.catalogUrl}`)
@@ -51,10 +55,9 @@ const app = new Vue({
         this.getJson(`${API + this.basketUrl}`)
         .then(data => {
             for(let item of data.contents){
-                this.basket.push(item);
-                
+                this.basket.push(item);    
             }
-            console.log(this.basket)
+            // console.log(this.basket)
         });
     }
 })
