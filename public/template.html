@@ -18,19 +18,19 @@
             </form>
             <button  @click="showBasket()" class="btn-cart" type="button">Корзина</button>
             <div class="cart-block invisible">
-                <div class="cart-item" v-for="product of basket" :key="product.id_product">
-                    <div class="cart">
+                <div class="cart-item" v-for="item of basket" :key="item.id_product">
+                    <div class="cart" v-show ="!show" v-if="item.quantity > 0">
                         <img :src="imgCatalog" class="cart-img" alt="Some img">
                         <div>
-                            <h3>{{product.product_name}}</h3>                        
-                            <p> Quantity {{ product.quantity }}</p>
+                            <h3>{{item.product_name}}</h3>                        
+                            <p> Quantity {{ item.quantity }}</p>
                         </div>
                         <div>
-                            <p>{{product.price}} $</p>
-                            <button @click="product.quantity--" class="buy-btn decrease-btn">x</button>
+                            <p>{{item.price}} $</p>
+                            <button @click="removeProduct(item)" class="buy-btn decrease-btn">x</button>
                         </div>
                     <hr>
-                    </div>
+                </div>
                 </div>
             </div>
         </div>
