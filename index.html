@@ -34,7 +34,14 @@
         
     </header>
     <main>
-        <products :products="filtered" :img="imgProduct" @add-product="addProduct"></products>
+        <template v-if="filtered">
+            <products :products="filtered" :img="imgProduct" @add-product="addProduct"></products>
+            <message :text="getErrorMessage"></message>
+        </template>
+        <template v-else>
+            <message :text="getErrorMessage"></message>
+        </template>
+
     </main>
 </div>
     <script defer src="https://use.fontawesome.com/releases/v5.7.2/js/all.js" integrity="sha384-0pzryjIRos8mFBWMzSSZApWtPl/5++eIfzYmTgBBmXYdhvxPc+XcFEk+zJwDgWbP" crossorigin="anonymous"></script>
@@ -42,6 +49,7 @@
 <script src="js/ProductComponent.js"></script>
 <script src="js/CartComponent.js"></script>
 <script src="js/ProductSearch.js"></script>
+<script src="js/message.js"></script>
     <script src="js/main.js"></script>
 </body>
 </html>

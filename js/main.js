@@ -15,7 +15,31 @@ const app = new Vue({
         imgProduct: 'https://placehold.it/200x150',
         error: false
     },
+    computed: {
+        getErrorMessage() {
+            if (this.errorMessage) {
+                return this.errorMessage;
+            }
+            if (!this.filtered.length) {
+                return 'Нет данных';
+            }
+            return '';
+        }
+        },
     methods: {
+        getJson(url) {
+            this.isLoading = true;
+            this.errorMessage = '';
+            return fetch(url)
+                .then(result => result.json())
+                .finally(() => {
+                    this.isLoading = false;
+                })
+                .catch(error => {
+                    console.log(error);
+                    this.errorMessage = 'Не удалось выполнить запрос к серверу'
+                })
+        },
         getJson(url){
             return fetch(url)
                 .then(result => result.json())
@@ -76,6 +100,7 @@ const app = new Vue({
                 }
             })*/
     }
+    
 
 });
 
