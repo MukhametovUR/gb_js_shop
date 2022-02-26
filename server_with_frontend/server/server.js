@@ -1,14 +1,14 @@
-const express = require('express');//Импортируем внешний модуль express
-const fs = require('fs');//Импортируем внешний модуль filesystem для работы с файлами json
-const app = express();//Вызываем функцию express app.application
+const express = require('express'); //Импортируем внешний модуль express
+const fs = require('fs');           //Импортируем внешний модуль filesystem для работы с файлами json
+const app = express();              //Вызываем функцию express app.application
 const cart = require('./cartRouter');//обработчик всех запросов корзины для работы с корзиной
 
-app.use(express.json());//Указываем, что сервер будет работать с json
+app.use(express.json());            //Указываем, что сервер будет работать с json
 app.use('/', express.static('public'));//При открытии главной страницы ищем 
-//статический файл из папки public - index.html (Переходим index.html)
-app.use('/api/cart', cart);//Модуль отвечает на запросы клиента cartRouter
-//Сервер ждет запрос по этому адресу 
-//из файла CartComponent.js
+                                    //статический файл из папки public - index.html (Переходим index.html)
+app.use('/api/cart', cart);         //Модуль отвечает на запросы клиента cartRouter
+                                    //Сервер ждет запрос по этому адресу 
+                                    //из файла CartComponent.js
 
 
 // app.get();
