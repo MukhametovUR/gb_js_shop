@@ -24,9 +24,8 @@ router.put('/:id', (req, res) => {//Передаем id из файла CartComp
     //Отвечаем на запрос при помощи обработчика handler
     handler(req, res, 'change', 'server/db/userCart.json');
 });
-router.delete('/:id', (req, res) => {//Передаем id из файла CartComponent.js
-    //Отвечаем на запрос при помощи обработчика handler
-    handler(req, res, 'remove', 'server/db/userCart.json');
+router.delete(`/:id/:name`, (req, res) => {
+    handler(req, res, 'remove', `server/db/userCart.json`);
 });
 
 module.exports = router;

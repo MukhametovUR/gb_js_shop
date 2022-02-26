@@ -28,24 +28,29 @@ const app = new Vue({
                 body: JSON.stringify(data)
             })
                 .then(result => result.json())
-                .catch(error => {
-                    // console.log(error)
-                    this.$refs.error.text = error;
-                })
+                .catch(error => this.$refs.error.setText(error))
         },
-        putJson(url, data){//Принимает url data
+        putJson(url, data){
             return fetch(url, {
-                method: 'PUT',//Метод для вставки запроса
+                method: 'PUT',
                 headers: {
-                    "Content-Type": "application/json"//Заголовки запроса
+                    "Content-Type": "application/json"
                 },
-                body: JSON.stringify(data)//Тело запроса преобразуем объект в строку json {{quantity:1}}
+                body: JSON.stringify(data)
             })
                 .then(result => result.json())
-                .catch(error => {
-                    // console.log(error)
-                    this.$refs.error.text = error;
-                })
+                .catch(error => console.log(error))
+        },
+        delJson(url, data){
+            return fetch(url, {
+                method: 'DELETE',
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(data)
+            })
+                .then(result => result.json())
+                .catch(error => this.$refs.error.setText(error))
         },
 
 

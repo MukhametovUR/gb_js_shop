@@ -10,10 +10,18 @@ let change = (cart, req) => {//Функция изменить количест�
     //Переводим объект в строку и передаем в handler.js
 };
 
-let remove = (cart, req) => {//Функция удалить товар из корзины
-    let find = cart.contents.find(el => el.id_product === +req.params.id);
-    console.log(find);
-    cart.contents.splice(find,1);
+let remove = (cart, req) => {
+    for (let i = 0; i < cart.contents.length; i++) {
+        if (cart.contents[i].id_product === +req.params.id) {
+            if (cart.contents[i].quantity > 1) {
+                cart.contents[i].quantity -= 1;
+            }
+            if (cart.contents[i].quantity === 1) {
+                cart.contents.splice(i,1);
+            }
+        }
+    }
+    // find.quantity += req.body.quantity;
     return JSON.stringify(cart, null, 4);
 };
 

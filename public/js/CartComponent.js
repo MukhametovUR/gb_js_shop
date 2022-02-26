@@ -10,13 +10,13 @@ Vue.component('cart', {
       }
     },
     //1-Вызывается метод mounted
-    mounted(){
-        this.$parent.getJson(`/api/cart`)
-            .then(data => {
-                for (let item of data.contents){
-                    this.$data.cartItems.push(item);
+    mounted() {
+        this.$parent.getJson( `/api/cart` )
+            .then( data => {
+                for ( let el of data.contents ) {
+                    this.cartItems.push( el )
                 }
-            });
+            } );
     },
     methods: {
         addProduct(item){//Метод вызывается из файла CartProduct.js => template
@@ -58,17 +58,24 @@ Vue.component('cart', {
             //         }
             //     })
         },
-        remove(item){
-            this.$parent.getJson(`${API}/addToBasket.json`)
-                .then(data => {
-                    if (data.result === 1) {
-                        if(item.quantity>1){
-                            item.quantity--;
-                        } else {
-                            this.cartItems.splice(this.cartItems.indexOf(item), 1);
+       remove( product ) {
+            if ( product.quantity > 1 ) {
+                this.$parent.putJson( `/api/cart/${ product.id_product }/${ product.product_name }`, { quantity: -1 } )
+                    .then( data => {
+                        if ( data.result ) {
+                            product.quantity--;
                         }
-                    }
-                })
+                    } )
+            } else {
+                this.$parent.delJson( `/api/cart/${ product.id_product }/${ product.product_name }`, product )
+                    .then( data => {
+                        if ( data.result ) {
+                            this.cartItems.splice( this.cartItems.indexOf( product ), 1 );
+                        } else {
+                            console.log( 'error' );
+                        }
+                    } )
+            }
         },
     },
     template: `<div>
