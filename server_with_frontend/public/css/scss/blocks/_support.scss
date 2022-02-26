@@ -1,0 +1,133 @@
+.support {
+    left: 0;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+    background-image: url(../img/support_fon.png);
+    background-repeat: no-repeat;
+    background-position: 50% 0;
+    background-size: cover;
+}
+
+.support {
+    &__list {
+        padding-top: 100px;
+        display: flex;
+        justify-content: space-around;
+    }
+
+    &__item {
+        align-items: center;
+        flex-direction: column;
+        text-align: center;
+    
+    }
+
+    &__item img {
+        width: 100px;
+    }
+
+    &__text {
+        font-size: 20px;
+        font-weight: 400;
+        line-height: 24px;
+        max-width: 260px;
+        margin-top: 30px;
+    }
+
+    &__text-italic {
+        font-size: 20px;
+        font-style: italic;
+        font-weight: 400;
+        line-height: 24px;
+    }
+
+    &__item-title {
+        font-size: 24px;
+        font-weight: 700;
+        line-height: 40px;
+    }
+
+    &__item-subtitle {
+        font-size: 18px;
+        font-weight: 400;
+        line-height: 40px;
+        margin-bottom: 30px;
+    }
+
+    &__subsribe-text {
+        height: 49px;
+        max-width: 320px;
+        padding: 0 20px;
+        background: #E1E1E1;
+        -webkit-border-top-left-radius: 100px;
+        -webkit-border-bottom-left-radius: 100px;
+        -moz-border-radius-topleft: 100px;
+        -moz-border-radius-bottomleft: 100px;
+        border-top-left-radius: 100px;
+        border-bottom-left-radius: 100px;
+    }
+
+    &__subsribe-text:focus {
+        background: rgb(255, 250, 219);
+    }
+
+    &__subsribe-text:hover {
+        background: #fff;
+    }
+
+    &__subsribe-btn {
+        margin-left: -10px;
+        color: #fff;
+        height: 53px;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 17px;
+        padding: 1px 17px 1px 20px;
+        background-color: #E05C6E;
+        border: 0;
+        -webkit-border-top-right-radius: 100px;
+        -webkit-border-bottom-right-radius: 100px;
+        -moz-border-radius-topright: 100px;
+        -moz-border-radius-bottomright: 100px;
+        border-top-right-radius: 100px;
+        border-bottom-right-radius: 100px;
+    }
+
+    &__subsribe-btn:active {
+        border: 1px solid #000;
+
+    }
+}
+
+
+@media (max-width: 1599px) {
+
+}
+
+@media (max-width: 767px) {
+    .support {
+        height: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .support__list {
+        padding: 0;
+        padding-top: 100px;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .support__item {
+        text-align: center;
+     }
+
+    .support__item-title {
+       text-align: center;
+    }
+
+    .support {
+        height: 50%;
+    }   
+}

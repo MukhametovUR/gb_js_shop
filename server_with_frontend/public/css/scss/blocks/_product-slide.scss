@@ -1,0 +1,16 @@
+.product-slide {
+    display: flex;
+    justify-content: space-around;
+    padding: 11px 0 42px 0;
+    background: #F7F7F7;
+}
+
+.d-block {
+    height: 700px;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background: #2A2A2A;
+    display: flex;
+}

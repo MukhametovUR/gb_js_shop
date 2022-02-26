@@ -1,0 +1,84 @@
+.sales {
+    display: flex;    
+    justify-content: center;
+}
+.sales {
+        &__list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        }
+
+        &__item {
+        width: 360px;
+        min-height: 260px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 30px 0 0 0;
+        flex-direction: column;
+        }
+
+        &__item-woman {
+            background: url(../img/for_woman.jpg);        
+            background-repeat: no-repeat;
+        }
+
+        &__item-man {
+            background: url(../img/for_man.jpg);        
+            background-repeat: no-repeat;
+        }
+
+        &__item-kids {
+            background: url(../img/for_kids.jpg);        
+            background-repeat: no-repeat;
+        }
+
+        &__item-shoes {
+            background: url(../img/for_legs.jpg);        
+            background-repeat: no-repeat;
+            width: 100%;
+        }
+
+        &__item-title {
+        color: white;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 19px;
+    }
+
+        &__item-text {
+        color: #E36878;
+        font-size: 18px;
+        font-weight: 900;
+        line-height: 22px;
+    }
+}
+.sales__item-up{
+    text-align: center;
+}
+.sales__item-up:hover {
+    transform: scale(1.2);
+}
+
+@media (max-width: 1499px) {
+    .sales__item {
+       display: flex;
+       margin-left: 10px;
+       flex: 1 0 215px;
+    }
+}
+
+@media (max-width: 767px) {
+
+    .sales {
+        display: flex;
+        justify-content: center;
+    }
+    
+    .sales__list {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+    }
+}

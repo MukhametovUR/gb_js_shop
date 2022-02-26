@@ -1,0 +1,129 @@
+.collection {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -70px;
+    margin-bottom: 100px;
+}
+
+.collection__wrp {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #fff;
+    padding: 0 400px;
+    border: 1px solid #EAEAEA;
+    z-index: 1;
+}
+
+.collection__subtitle {
+    margin-top: 65px;
+    font-size: 14px;
+    font-weight: 300;
+    color: #F16D7F;
+}
+
+.collection__title {
+    font-size: 24px;
+    font-weight: 300;
+    line-height: 22px;
+}
+
+.collection__text {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 17px;
+    width: 555px;
+    text-align: center;
+    color: #5E5E5E;
+    margin: 48px 0 32px 0;
+}
+
+.collection__price {
+    font-size: 24px;
+    font-weight: 300;
+    line-height: 29px;
+    color: #EF5B70;
+}
+
+.collection__select {
+    margin: 90px 0 20px 0;
+    display: flex;
+    justify-content: space-around;
+}
+
+.collection__select-item {
+    background: url('/img/arrow_down.svg') no-repeat right;
+    padding-right: 15px;
+    margin-right: 22px;
+}
+
+.collection__img {
+    background-image: url('/img/ping_track.svg');
+    background-repeat: no-repeat;
+    background-position: left;
+}
+
+.cart__title {
+    display: flex;
+    justify-content: space-around;
+}
+
+@media (max-width: 1499px) {
+    .container{
+        margin-top: 0;
+    }
+
+    .collection__wrp {
+        padding: 0;
+    }
+
+    .carousel-inner img {
+        height: 560px;
+    }
+
+    .cart__title {
+        display: flex;
+        text-align: center;
+        justify-content: space-between;
+    }
+
+    .cart__title {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .cart__title:nth-child(1) {
+        font-size: 20px;
+        white-space: nowrap;
+    }
+
+    .reg__title {
+        padding: 0;
+        padding: 20px;
+    }
+
+    .reg__title > div {
+        margin-top: 20px;
+    }
+}
+
+@media (max-width: 767px) {
+    .carousel-inner img {
+        height: 450px;
+    }
+
+    .collection {
+        margin-top: 0;
+    }
+
+    .collection__wrp {
+        padding: auto;
+        border: none;
+    }
+
+    .collection__text {
+        width: 350px;
+    }    
+}

@@ -1,0 +1,135 @@
+.catalog__title {
+    font-size: 30px;
+    font-weight: 400;
+    line-height: 36px;
+    text-align: center;
+}
+
+.catalog__subtitle {
+    font-size: 14px;
+    line-height: 17px;
+    color: #9F9F9F;
+    text-align: center;
+    margin: 0 0 57px 0;
+}
+
+.catalog__list {
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(3, 30%);
+}
+
+.catalog__item {
+    width: 380px;
+    margin: 0 0 0 10px;
+}
+
+.catalog__item-content {
+    position: relative;
+}
+
+.catalog__item-overlay {
+    position: absolute;
+    background: rgba(58, 56, 56, 0.86);
+    top: 0;
+    width: 96%;
+    height: 100%;
+}
+
+.catalog__item-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: url(../img/track.svg) no-repeat 10px;    
+    padding: 14px 16px 15px 50px;
+    border: 1px solid #fff;    
+    color: #fff;
+
+}
+
+.catalog__item-overlay,
+.catalog__item-btn {
+    display: none;
+}
+
+.catalog__item-content:hover .catalog__item-btn,
+.catalog__item-content:hover .catalog__item-overlay {
+    display: block;
+}
+
+.catalog__item-title {
+    font-size: 13px;
+    line-height: 16px;
+    font-weight: 900;
+    margin: 25px 0 12px 0;
+}
+
+.catalog__item-text a{
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 17px;
+    color: #5D5D5D;
+    opacity: 0.6;
+    text-decoration: none;
+
+}
+
+
+
+.catalog__item-price {
+    font-size: 16px;
+    line-height: 19px;
+    color: #F16D7F;
+    margin: 0 0 50px 0;
+}
+
+.catalog__wrp-btn {
+    display: grid;
+    justify-content: center;
+    margin: 50px auto;
+}
+
+.catalog__btn {
+    padding: 15px 50px;
+    border: 1px solid #FF6A6A;
+    text-decoration: none;
+    color: #F26376;    
+    white-space: nowrap;
+}
+
+.catalog__btn:hover {
+    background: #F26376;
+    color: #fff;
+}
+
+.cart-title > div >span {
+    color: #636363;
+    opacity: 0.5;
+}
+
+.catalog__nav {
+    display: flex;
+    justify-content: center;
+    opacity: 0.4;
+}
+
+@media (max-width: 1499px) {
+    .catalog__list {
+       display: grid;
+       grid-template-rows: repeat(2, 1fr);
+    }
+    .catalog__list {
+        display: grid;
+        justify-content: center;
+        grid-template-columns: repeat(2, 30%);
+    }
+}
+
+@media (max-width: 1300px) {
+
+    .catalog__list {
+        display: grid;
+        grid-template-columns: none;
+    }
+}
