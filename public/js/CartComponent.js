@@ -103,8 +103,8 @@ Vue.component('cart-item', {
     template: `
     <div class="cart-item">
                     <div class="product-bio">
-                        <img :src="img" alt="Some img">
-                        <div class="product-desc">
+                    <img v-bind:src=cartItem.img style="width: 100px;" alt="Some img">
+                    <div class="product-desc">
                             <div class="product-title">{{ cartItem.product_name }}</div>
                             <div class="product-quantity">Quantity: {{ cartItem.quantity }}</div>
                             <div class="product-single-price">$ {{ cartItem.price }} each</div>
