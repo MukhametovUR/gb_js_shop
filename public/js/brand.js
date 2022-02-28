@@ -1,4 +1,4 @@
-Vue.component('brand',{
+export default Vue.component('brand',{
     template:
                 `
                 <section class="brand">
@@ -9,4 +9,4 @@ Vue.component('brand',{
                 </div>
                 </section>
                 `
-})
+});

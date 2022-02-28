@@ -1,4 +1,4 @@
-Vue.component('footers',{
+export default Vue.component('footers',{
     template:
                 `
                 <div>

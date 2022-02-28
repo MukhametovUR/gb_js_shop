@@ -1,4 +1,4 @@
-Vue.component('navmenu',{
+export default Vue.component('navmenu',{
     template:
                 `
                 <nav class="header__nav">
