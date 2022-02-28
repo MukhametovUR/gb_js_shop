@@ -1,3 +1,9 @@
+import brand from "./brand";
+import CartComponent from "./CartComponent";
+import ErrorComp from "./ErrorComp";
+import FilterComp from "./FilterComp";
+import ProductComponent from "./ProductComponent";
+
 const API = 'https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses';
 
 const app = new Vue({

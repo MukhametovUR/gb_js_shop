@@ -1,6 +1,6 @@
 // const API = 'https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses';
 
-Vue.component('cart', {
+export default Vue.component('cart', {
     data(){
       return {
           cartUrl: '/getBasket.json',

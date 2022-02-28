@@ -115,7 +115,7 @@ img {
   background-color: white;
   padding: 20px;
   color: black;
-  width: 300px;
+  width: 900px;
 }
 
 .invisible {
@@ -127,7 +127,7 @@ img {
   width: 0;
   height: 0;
   position: absolute;
-  top: -10px;
+  top: -100px;
   right: 35px;
   border-left: 10px solid transparent;
   border-right: 10px solid transparent;
@@ -264,4 +264,4 @@ img {
   color: white;
   font-weight: bold;
 }
-/*# sourceMappingURL=products.css.map */
+/*# sourceMappingURL=prod.css.map */

@@ -1,4 +1,4 @@
-Vue.component('products', {
+export default Vue.component('products', {
     data(){
         return {
             catalogUrl: '/catalogData.json',

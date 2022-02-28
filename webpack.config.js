@@ -7,12 +7,10 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');//Подключаем 
 module.exports = {
     mode: 'development',
 
-    entry:[ './public/js/style.js',
+    entry:  [ 
             './public/js/main.js',            
-            './public/js/CartComponent.js',
-            './public/js/ErrorComp.js',
-            './public/js/ProductComponent.js',
-        ],//Подключаем скрипты
+            ],//Подключаем скрипт
+            
     
     output:{
         path: path.resolve(__dirname,'dist'),//Создаемы новую директорию
@@ -22,20 +20,13 @@ module.exports = {
         rules: 
       [
         {
-            test:/\.(s*)css$/,
-            use: [
-               miniCss.loader,
-               'css-loader',
-               'sass-loader',
-            ]
+            test: /\.scss$/,
+              use: [
+                'style-loader',
+                'css-loader',
+                'sass-loader'
+              ]
          },
-        {
-            test: /\.css$/,
-            use: [
-                'vue-style-loader',
-                'css-loader'
-            ]
-        },
         {
             test: /\.vue$/,
             loader: 'vue-loader'
@@ -52,7 +43,7 @@ module.exports = {
             {
               from: path.resolve(__dirname, 'public/img'),
               to:   path.resolve(__dirname, 'dist/img')
-            }
+            },
           ]
         }),
     new miniCss({

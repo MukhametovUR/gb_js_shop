@@ -1,4 +1,4 @@
-Vue.component('error', {
+export default Vue.component('error', {
     data(){
         return {
           text: ''
