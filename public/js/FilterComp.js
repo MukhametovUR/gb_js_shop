@@ -1,4 +1,4 @@
-export default Vue.component('filter-el', {
+Vue.component('filter-el', {
     data(){
       return {
           userSearch: ''
@@ -10,4 +10,4 @@ export default Vue.component('filter-el', {
                     <i class="fas fa-search"></i>
                 </button>
             </form>`
-})
+});

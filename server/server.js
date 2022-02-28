@@ -4,7 +4,7 @@ const app = express();              //Вызываем функцию express ap
 const cart = require('./cartRouter');//обработчик всех запросов корзины для работы с корзиной
 
 app.use(express.json());            //Указываем, что сервер будет работать с json
-app.use('index.html', express.static('dist'));//При открытии главной страницы ищем 
+app.use('/', express.static('dist'));//При открытии главной страницы ищем 
                                     //статический файл из папки public - index.html (Переходим index.html)
 app.use('/api/cart', cart);         //Модуль отвечает на запросы клиента cartRouter
                                     //Сервер ждет запрос по этому адресу 

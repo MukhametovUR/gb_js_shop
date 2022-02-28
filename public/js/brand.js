@@ -1,4 +1,4 @@
-export default Vue.component('brand',{
+Vue.component('brand',{
     template:
                 `
                 <section class="brand">
