@@ -17,8 +17,7 @@ body {
   overflow: hidden;
   border: 0;
   padding: 0;
-  -webkit-clip-path: inset(50%);
-          clip-path: inset(50%);
+  clip-path: inset(50%);
   margin: -1px;
 }
 
@@ -28,4 +27,3 @@ body {
     padding: 70px 10px;
   }
 }
-/*# sourceMappingURL=general.css.map */

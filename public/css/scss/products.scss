@@ -42,10 +42,8 @@ button:focus{
 .products{
     column-gap: 30px;
     display: flex;
-    grid-template-columns: repeat(auto-fit, 200px);
-    grid-template-rows: 1fr;
-    padding: 40px 80px;
-    justify-content: space-between;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 p {
     margin: 0 0 5px 0;

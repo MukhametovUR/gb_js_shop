@@ -41,7 +41,7 @@ module.exports = {
       new minify({})
     ],
   },
-   plugins: [
+  plugins: [
     new HtmlWebpackPlugin({
         template: "./public/template.html"
     }),
@@ -61,7 +61,5 @@ module.exports = {
             filename: 'style.css',
          }),
     new VueLoaderPlugin(),
-    
-
-]
+  ]
 }
